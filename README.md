@@ -11,17 +11,17 @@ Even if you don't want it as a service, this script automates installation and e
 ### Debian/Ubuntu, Raspberry Pi (Raspbian)
 The script doesn't need to be run as root, it will elevate permissions when it needs to.
 ```bash
-bash <(curl -sS https://raw.githubusercontent.com/aBoredDev/playit-setup-script/main/playit-setup.sh)
+bash <(curl -sS https://raw.githubusercontent.com/dwellman8940/playit-setup-script/main/playit-setup.sh)
 ```
 And that's it!
 
 If you just want to install the tunnel host without setting up a service, use the following command:
 ```bash
-bash <(curl -sS https://raw.githubusercontent.com/aBoredDev/playit-setup-script/main/playit-setup.sh) --no-service
+bash <(curl -sS https://raw.githubusercontent.com/dwellman8940/playit-setup-script/main/playit-setup.sh) --no-service
 ```
 And if you only want to set up a systemd service for playit, you can use
 ```bash
-bash <(curl -sS https://raw.githubusercontent.com/aBoredDev/playit-setup-script/main/playit-setup.sh) --service-only
+bash <(curl -sS https://raw.githubusercontent.com/dwellman8940/playit-setup-script/main/playit-setup.sh) --service-only
 ```
 ## Viewing the tunnel host
 To view the tunnel host once it is running as a service, use the following command:
@@ -32,9 +32,9 @@ To exit the tunnel host and return to the terminal session, use __Ctrl+A D__.  T
 
 ## Managing the service
 To manage any service on Linux under systemd, you use the `systemctl` command.
-- To stop the playit service, run `sudo systemctl stop playit`.
-- To start the playit service, run `sudo systemctl start playit`.
-- To restart the playit service, run `sudo systemctl restart playit`.
+- To stop the playit service, run `systemctl stop playit`.
+- To start the playit service, run `systemctl start playit`.
+- To restart the playit service, run `systemctl restart playit`.
 - To view the status of the playit service, run `systemctl status playit`.
 
 For more information on the systemctl command, see [this article](https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units) on DigitalOcean, or the [man page](https://www.man7.org/linux/man-pages/man1/systemctl.1.html).
