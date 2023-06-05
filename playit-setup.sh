@@ -81,10 +81,10 @@ It will not work!  So we're just going to delete it for you.\n"
         case $distro in
             debian) # Get the package if we're on a debian based distro
                 # For Debian & Ubuntu based systems
-                curl -SsL https://playit-cloud.github.io/ppa/key.gpg | sudo apt-key add -
-                sudo curl -SsL -o /etc/apt/sources.list.d/playit-cloud.list https://playit-cloud.github.io/ppa/playit-cloud.list
-                sudo apt update
-                sudo apt install playit
+                curl -SsL https://playit-cloud.github.io/ppa/key.gpg | apt-key add -
+                curl -SsL -o /etc/apt/sources.list.d/playit-cloud.list https://playit-cloud.github.io/ppa/playit-cloud.list
+                apt update
+                apt install playit
                 playit_path="/opt/playit"
                 name="playit"
             ;;
@@ -140,7 +140,7 @@ To start the tunnel host again at any time, run './$name'\n"
         # Install screen so that the user can view the output of the playit host
         # we use screen because tmux has caused issues with playit for me in the past
         printf "\n\033[04=====m\033[01mInstalling screen\033[00m\033[04=====\033[00m\n"
-        sudo apt install screen
+        apt install screen
 
         printf "\nInstalling service file\n"
         # I know this looks messy, but if I don't do it this way the service file ends up indented
@@ -159,15 +159,15 @@ ExecStop=/usr/bin/screen -S playit.gg -X quit
 [Install]
 WantedBy=multi-user.target\n" > ./playit.service
 
-        sudo mv -f ./playit.service /etc/systemd/system/playit.service
+        mv -f ./playit.service /etc/systemd/system/playit.service
 
-        sudo chown root:root /etc/systemd/system/playit.service
+        chown root:root /etc/systemd/system/playit.service
 
         # Reload systemctl, then enable and start the service
         printf "\n\033[04=====m\033[01mReloading systemctl and enabling service\033[00m\033[04=====\033[00m\n"
-        sudo systemctl daemon-reload
-        sudo systemctl enable playit
-        sudo systemctl start playit
+        systemctl daemon-reload
+        systemctl enable playit
+        systemctl start playit
 
         # Open screen to show the user the tunnel host, and make sure they know how to exit
         printf "\n\n\nOpening tunnel host now.
