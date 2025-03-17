@@ -7,7 +7,7 @@
 # whenever the computer is started
 
 # Current version of playit
-playit_version="0.9.3"
+playit_version="0.15.26"
 
 # Check the device's architechture
 arch=$( uname -m )
