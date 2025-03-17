@@ -81,8 +81,8 @@ It will not work!  So we're just going to delete it for you.\n"
         case $distro in
             debian) # Get the package if we're on a debian based distro
                 # For Debian & Ubuntu based systems
-                curl -SsL https://playit-cloud.github.io/ppa/key.gpg | apt-key add -
-                curl -SsL -o /etc/apt/sources.list.d/playit-cloud.list https://playit-cloud.github.io/ppa/playit-cloud.list
+                curl -SsL https://playit-cloud.github.io/ppa/key.gpg | gpg --dearmor | tee /etc/apt/trusted.gpg.d/playit.gpg >/dev/null
+                echo "deb [signed-by=/etc/apt/trusted.gpg.d/playit.gpg] https://playit-cloud.github.io/ppa/data ./" | tee /etc/apt/sources.list.d/playit-cloud.list
                 apt update
                 apt install playit
                 playit_path="/opt/playit"
