@@ -12,7 +12,7 @@ playit_version="0.15.26"
 # Check the device's architechture
 arch=$( uname -m )
 # Check the device's OS, because we can use apt for debian/ubuntu
-distro=$( grep --colour=never -Po '(?<=^ID_LIKE=).*$' /etc/os-release )
+distro="debian"
 
 name=""
 playit_path=""
